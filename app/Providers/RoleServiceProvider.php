@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+
+class RoleServiceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap services.
+     */
+    public function boot(): void
+    {
+        Gate::define('isAdmin', fn ($user) => $user->role === 'admin');
+        Gate::define('isSupport', fn ($user) => $user->role === 'support');
+        Gate::define('isDriver', fn ($user) => $user->role === 'driver');
+    }
+}
