@@ -10,3 +10,6 @@ Route::get('/user', function (Request $request) {
 
 Route::post('send-otp',[UserController::class,'sendOtp']);
 Route::post('verify-otp',[UserController::class,'verifyOtp']);
+Route::post('forgot-password-otp',[UserController::class,'sendForgotPasswordOtp']);
+Route::post('forgot-password-otp-verify',[UserController::class,'sendForgotPasswordOtpVerify']);
+Route::post('reset-password',[UserController::class,'resetPassword']);
