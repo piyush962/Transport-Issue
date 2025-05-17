@@ -51,6 +51,7 @@ class UserController extends Controller
             $user = User::where('mobile_number', $mobile)->first();
 
             if ($user) {
+                $token = $user->createToken('transport-app')->plainTextToken;
                 // Check if OTP matches
                 if ($otp == $user->otp) {
                     // Check if OTP is expired
@@ -58,7 +59,11 @@ class UserController extends Controller
                         return response()->json([
                             'status' => true,
                             'code' => 200,
-                            'data' => $request->only(['mobile', 'otp']),
+                            'data' => [
+                                'mobile' => $mobile,
+                                'otp' => $otp,
+                                'token' => $token,                                
+                            ],
                             'message' => 'You are successfully logged in.'
                         ], 200);
                     } else {
@@ -142,12 +147,16 @@ class UserController extends Controller
             $user = User::where('mobile_number', $mobile)->first();
 
             if ($user) {
+                $token = $user->createToken('transport-app')->plainTextToken;
                 if ($otp == $user->otp) {
                     if (Carbon::now('Asia/Kolkata')->lessThanOrEqualTo($user->otp_expired_time)) {
                         return response()->json([
                             'status' => true,
                             'code' => 200,
-                            'data' => $request->only(['mobile']),
+                             'data' => [
+                                'mobile' => $mobile,
+                                'token' => $token,                                
+                            ],
                             'message' => 'OTP verified successfully. You can now reset your password.'
                         ], 200);
                     } else {
@@ -185,11 +194,8 @@ class UserController extends Controller
     }
 
     public function resetPassword(Request $request){
-       
-
         // Step 2: Find user by mobile
         $user = User::where('mobile_number', $request->mobile)->first();
-
         if (!$user) {
             return response()->json([
                 'status' => false,
@@ -197,33 +203,54 @@ class UserController extends Controller
                 'message' => 'Mobile number not found.'
             ], 404);
         }
+        if(!empty($request->current_password)){
 
-        // Step 3: Check if old password matches
-        if (!Hash::check($request->current_password, $user->password)) {
+            if (!Hash::check($request->current_password, $user->password)) {
+                return response()->json([
+                    'status' => false,
+                    'code' => 401,
+                    'message' => 'Old password is incorrect.'
+                ], 401);
+            }
+        }else{
             return response()->json([
-                'status' => false,
-                'code' => 401,
-                'message' => 'Old password is incorrect.'
-            ], 401);
+            'status'=>false,
+            'code'=> 400,
+            'message'=>'Current password is required.'
+            ],400);
+        }
+        if(!empty($request->current_password)){
+        
+            if (Hash::check($request->new_password, $user->password)) {
+                return response()->json([
+                    'status' => false,
+                    'code' => 400,
+                    'message' => 'New password cannot be the same as the old password.'
+                ], 400);
+            }
+        }else{
+            return response()->json([
+            'status'=>false,
+            'code'=> 400,
+            'message'=>'new password is required.'
+            ],400);
         }
 
-        // Step 4: Check if new password is different from old
-        if (Hash::check($request->new_password, $user->password)) {
-            return response()->json([
-                'status' => false,
-                'code' => 400,
-                'message' => 'New password cannot be the same as the old password.'
-            ], 400);
-        }
 
         // Step 5: Update password
         $user->password = Hash::make($request->new_password);
-        $user->save();
-
-        return response()->json([
-            'status' => true,
-            'code' => 200,
-            'message' => 'Password has been reset successfully.'
-        ], 200);
+        if($user->save()){
+            return response()->json([
+                'status' => true,
+                'code' => 200,
+                'message' => 'Password has been reset successfully.'
+            ], 200);
+        } else{
+            return response()->json([
+            'status'=>false,
+            'code'=> 400,
+            'message'=>'Failed to reset password, please try again.'
+            ],400);
+        }       
     }
 }

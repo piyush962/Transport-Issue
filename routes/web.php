@@ -3,6 +3,20 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Artisan;
+Route::get('/migrate', function(){
+    Artisan::call('migrate');
+    return 'Migration Completed Successfully!';
+});
+
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    return 'All cache cleared successfully!';
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
