@@ -14,19 +14,24 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
+   <body class="font-sans antialiased">
+        <div class="min-h-screen bg-gray-100 flex">            
+            <!-- Page Heading -->         
+              <header class="bg-white shadow flex justify-between items-center px-6 py-4 border-b">
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800">Overview</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <select class="border rounded px-2 py-1 text-sm text-gray-700">
+                        <option>Week</option>
+                        <option>Month</option>
+                    </select>
+                    <button class="text-gray-600 hover:text-red-600">🔔</button>
+                    <button class="text-gray-600 hover:text-red-600">👤</button>
+                </div>
+            </header>   
+            @include('layouts.navigation')   
+                     
             <!-- Page Content -->
             <main>
                 {{ $slot }}

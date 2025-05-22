@@ -7,41 +7,45 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\UserDetail;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function sendOtp(Request $request)
-    {
-        if ($request->isMethod('post')) {
-            $mobile = $request->mobile;
+    public function sendOtp(Request $request){
+        $role = $request->role;
+        $mobile = $request->mobile;
 
-            $userExists = User::where('mobile_number', $mobile)->first();
+        $user = User::where('mobile_number', $mobile)
+                    ->where('role', $role)
+                    ->first();
 
-            if ($userExists) {
-                $otp = rand(100000, 999999);
-                $expireTime = Carbon::now('Asia/Kolkata')->addMinutes(5);
-                $userExists->update(['otp'=> $otp , 'otp_expired_time'=>$expireTime]);
-                return response()->json([
-                    'status' => true,
-                    'otp' => $otp,
-                    'expires_at' => $expireTime->toDateTimeString(),
-                    'message' => 'OTP generated successfully'
-                ]);
-            } else {
-                return response()->json([
-                    'status' => false,
-                    'data' => null,
-                    'message' => 'Mobile number not found!'
-                ]);
-            }
+        if (!$user) {
+            return response()->json([
+                'status' => false,
+                'message' => 'User with provided mobile and role not found.',
+            ], 404);
         }
 
+        $otp = rand(100000, 999999);
+        // $expireTime = Carbon::now('Asia/Kolkata')->addMinutes(5);
+        $expireTime = Carbon::now('Asia/Kolkata')->addDays(365);
+        $user->update([
+            'otp' => '123456',
+            'otp_expired_time' => $expireTime,
+        ]);
+
         return response()->json([
-            'status' => false,
-            'message' => 'Only POST method allowed'
-        ], 405);
+            'status' => true,
+            'message' => 'OTP generated successfully.',
+            'data' => [
+                'otp' => '123456',
+                'role' => $role,
+                'expires_at' => $expireTime->toDateTimeString(),
+            ]
+        ], 200);
     }
+
 
     public function verifyOtp(Request $request){
         if ($request->isMethod('post')) {
@@ -61,8 +65,9 @@ class UserController extends Controller
                             'code' => 200,
                             'data' => [
                                 'mobile' => $mobile,
-                                'otp' => $otp,
-                                'token' => $token,                                
+                                'otp' => '123456',   //$otp
+                                'token' => $token,   
+                                'data' => $user, // Return user data                       
                             ],
                             'message' => 'You are successfully logged in.'
                         ], 200);
@@ -253,4 +258,56 @@ class UserController extends Controller
             ],400);
         }       
     }
+
+    public function getUser(Request $request){
+        $user = User::with('userDetail')->where('id', $request->user()->id)->first();
+        if($user){
+            return response()->json([
+                'status' => true,
+                'code' => 200,
+                'data' => $user,
+                'message' => 'User data retrieved successfully.'
+            ], 200);
+        }else{
+            return response()->json([
+                'status' => false,
+                'code' => 404,
+                'data' => null,
+                'message' => 'User not found.'
+            ], 404);
+        }
+    }
+
+    public function updateUser(Request $request){
+    $user = $request->user();  
+
+    // Update User table
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->save();
+
+    // Update or create userDetail
+    $userDetail = $user->userDetail ?? new UserDetail();
+    $userDetail->user_id = $user->id;
+    $userDetail->address = $request->address;
+    $userDetail->driving_license_number = $request->driving_license_number;
+
+    if ($request->hasFile('profile_picture')) {
+        $file = $request->file('profile_picture');
+        $filename = 'profile_' . time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('user_documents/profile'), $filename);
+        // $file->storeAs('public/user_documents', $filename);
+        $userDetail->profile_picture = $filename;
+    }
+
+    $userDetail->save();
+
+    return response()->json([
+        'status' => true,
+        'code' => 200,
+        'message' => 'User details updated successfully.',
+        'data' => User::with('userDetail')->find($user->id),
+    ]);
+}
+
 }
