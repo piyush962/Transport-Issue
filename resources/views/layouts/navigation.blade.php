@@ -10,7 +10,7 @@
                     <a href="#" class="block text-gray-700 font-medium hover:text-red-600">User</a>
                     <!-- Sub-menu -->
                     <div class="pl-6 space-y-1">
-                        <a href="#" class="block text-gray-700 hover:text-red-600">Driver</a>
+                        <a href="{{route('driver.index')}}" class="block text-gray-700 hover:text-red-600">Driver</a>
                         <a href="#" class="block text-gray-700 hover:text-red-600">Support Team</a>
                     </div>
                 </div>

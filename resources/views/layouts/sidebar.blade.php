@@ -17,7 +17,7 @@
             </a>
         </li>
         <li class="item group has-submenu ">
-            <a href="javascript:void(0);" class="button nav-link text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px] relative">
+            <a href="#" class="button nav-link text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px] relative">
                 <span class="w-[34px] h-[34px] inline-flex items-center justify-center">
                     <!-- <img src="http://127.0.0.1:8000/assets/images/user-icon.png" alt="icon" class="hidden group-[.active]:block">
                         <img src="http://127.0.0.1:8000/assets/images/user-icon-w.png" alt="icon" class="block group-[.active]:hidden"> -->
@@ -35,7 +35,7 @@
             </a>
             <ul class="accordian_body pl-[15px] mt-[5px] hidden">
                 <li class="group">
-                    <a href="http://127.0.0.1:8000/users" class="p-[10px] text-[#727272] font-[Inter] text-sm lg:text-base font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.activeSubMenu]:bg-[#FF3B30] group-[.activeSubMenu]:text-[#ffffff]  rounded-[10px] ">
+                    <a href="{{route('users.driver.index')}}" class="p-[10px] text-[#727272] font-[Inter] text-sm lg:text-base font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.activeSubMenu]:bg-[#FF3B30] group-[.activeSubMenu]:text-[#ffffff]  rounded-[10px] ">
                         <svg width="20" height="23" viewBox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.468994C15.523 0.468994 20 4.94599 20 10.469C20 15.992 15.523 20.469 10 20.469C4.477 20.469 0 15.992 0 10.469C0 4.94599 4.477 0.468994 10 0.468994ZM2.205 12.279C2.55496 13.7814 3.33129 15.1507 4.44071 16.2226C5.55013 17.2944 6.94545 18.023 8.459 18.321C8.266 15.696 7.403 14.121 6.313 13.25C5.269 12.415 3.853 12.092 2.205 12.278V12.279ZM13.687 13.249C12.597 14.122 11.734 15.696 11.541 18.321C13.0547 18.023 14.4501 17.2941 15.5595 16.2221C16.669 15.1501 17.4452 13.7806 17.795 12.278C16.147 12.092 14.731 12.415 13.687 13.25V13.249ZM10 2.46899C8.13602 2.46867 6.33043 3.11923 4.89502 4.30835C3.4596 5.49747 2.48447 7.1505 2.138 8.98199L2.095 9.22999L4.305 8.78799C4.887 8.67199 5.44 8.36499 6.058 7.94799L6.535 7.61599C7.332 7.04999 8.513 6.46899 10 6.46899C11.388 6.46899 12.509 6.97499 13.3 7.50299L13.942 7.94799C14.482 8.31299 14.974 8.59299 15.478 8.73599L15.695 8.78799L17.905 9.22999C17.6096 7.34575 16.6508 5.62902 15.2013 4.38935C13.7519 3.14968 11.9073 2.46863 10 2.46899Z" fill="currentColor" />
                         </svg>
