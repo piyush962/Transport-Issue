@@ -1,0 +1,1 @@
+<p class="text-center font-[Inter] text-[13px] font-[400] text-[#1E1E1E] leading-[19px] tracking-[-0.02em]">Copyright®{{date('Y')}} Company All right Reserved</p>
