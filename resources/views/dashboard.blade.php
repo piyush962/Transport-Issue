@@ -53,8 +53,8 @@
                             <thead>
                                 <tr class="bg-[rgba(255,59,48,0.1)]">
                                     <td class="px-3 lg:px-4 py-3 lg:py-4 whitespace-nowrap text-sm font-medium text-[#1E1E1E]  text-left uppercase tracking-[-0.04em]">Name</td>
-                                    <td class=" px-3 lg:px-4 py-3 lg:py-4 whitespace-nowrap  text-sm font-medium text-[#1E1E1E]  text-left uppercase tracking-[-0.04em]">phone NUMBER</td>
-                                    <td class="px-3 lg:px-4 py-3 lg:py-4 whitespace-nowrap   text-sm font-medium text-[#1E1E1E]  text-left uppercase tracking-[-0.04em]">role</td>
+                                    <td class=" px-3 lg:px-4 py-3 lg:py-4 whitespace-nowrap text-sm font-medium text-[#1E1E1E]  text-left uppercase tracking-[-0.04em]">phone NUMBER</td>
+                                    <td class="px-3 lg:px-4 py-3 lg:py-4 whitespace-nowrap text-sm font-medium text-[#1E1E1E]  text-left uppercase tracking-[-0.04em]">role</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -106,7 +106,7 @@
                 <div class="w-full md:w-6/12">
                     <div class="flex justify-end items-center pb-2.5">
                         <div class="relative  w-full md:w-auto mr-2 lg:mr-4">
-                            <input type="text" name="search" placeholder="Search Category Name" class="w-full rounded-[10px] border border-[rgba(0,0,0,0.1)] text-[#595959] text-sm tracking-[-0.03em] pl-10" value="">
+                            <input type="text" name="search" placeholder="Search Category Name" class="w-full rounded-[7px] border border-[rgba(0,0,0,0.1)] text-[#595959] text-sm tracking-[-0.03em] pl-10" value="">
                             <img class="absolute left-3 top-1/2 -translate-y-1/2 cursor-pointer" src="{{asset('assets/images/search.png')}}" alt="search icon">
                         </div>
                         <button class="filter flex text-[#1E1E1E] text-sm tracking-[-0.04em] rounded-md border border-[rgba(0,0,0,0.1)] py-2  pl-2.5 lg:pl-3 pr-3 lg:pr-3.5 hover:bg-[#FF3B30] hover:text-white">
