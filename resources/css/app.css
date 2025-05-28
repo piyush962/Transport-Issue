@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* ---------------- */
 body{
     font-family: "Inter", sans-serif;
     font-weight: 400;
@@ -11,3 +11,29 @@ body{
     margin: 0;
     padding: 0;
 }
+
+[type='file'] { padding: 0; }
+ 
+input[type=file]::file-selector-button {
+  color: #000;
+  background: rgba(255, 59, 48, .1);
+  border: 0;
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-inline-start: -1rem;
+  margin-inline-end: 1rem;
+  margin-top: 3px;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #FF3B30;
+  color: #fff;
+}
+ 

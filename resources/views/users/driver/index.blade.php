@@ -21,8 +21,8 @@
                     </svg>
                     Export
                 </button>
-                <a href="/user/driver/add" class="inline-block filter flex text-white text-sm tracking-[-0.04em] rounded-md border border-[rgba(0,0,0,0.1)] py-2  pl-2.5 lg:pl-3 pr-3 lg:pr-3.5 bg-[#FF3B30] hover:bg-[rgba(255,59,48,0.1)] hover:text-[FF3B30]">
-                    + &nbsp; Add
+                <a href="/user/driver/add" class="inline-block filter flex text-white text-sm tracking-[-0.04em] rounded-md border border-[rgba(0,0,0,0.1)] py-2 pl-3 lg:pl-3.5 pr-3 lg:pr-5  bg-[#FF3B30] hover:bg-[#cd251c] hover:text-white">
+                     +&nbsp;Add
                 </a>
             </div>
 

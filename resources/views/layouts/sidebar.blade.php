@@ -4,7 +4,7 @@
 <div>
     <ul class="space-y-2 accordian ">
         <li class="group active ">
-            <a href="http://127.0.0.1:8000/dashboard" class="text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px]">
+            <a href="{{route('dashboard')}}" class="text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px]">
                 <span class="w-[34px] h-[34px] inline-flex items-center justify-center">
                     <!-- <img src="http://127.0.0.1:8000/assets/images/dashboard-icon.png" alt="icon" class="hidden group-[.active]:block">
                     <img src="http://127.0.0.1:8000/assets/images/dashboard-icon-w.png" alt="icon" class="block group-[.active]:hidden"> -->
@@ -88,7 +88,7 @@
             </ul>
         </li>
         <li class="item group has-submenu ">
-            <a href="javascript:void(0);" class="button nav-link text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px] relative">
+            <a href="{{route('deliveries.index')}}" class="button nav-link text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px] relative">
                 <span class="w-[34px] h-[34px] inline-flex items-center justify-center">
                     <!-- <img src="http://127.0.0.1:8000/assets/images/user-icon.png" alt="icon" class="hidden group-[.active]:block">
                         <img src="http://127.0.0.1:8000/assets/images/user-icon-w.png" alt="icon" class="block group-[.active]:hidden"> -->
@@ -103,27 +103,10 @@
                 <svg class="hidden group-[.active]:inline-block mr-[5px] absolute right-2 top-5" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.451987 1.57999L1.51299 0.519991L7.29199 6.29699C7.38514 6.38956 7.45907 6.49963 7.50952 6.62088C7.55997 6.74213 7.58594 6.87216 7.58594 7.00349C7.58594 7.13482 7.55997 7.26485 7.50952 7.3861C7.45907 7.50735 7.38514 7.61742 7.29199 7.70999L1.51299 13.49L0.452987 12.43L5.87699 7.00499L0.451987 1.57999Z" fill="currentColor"></path>
                 </svg>
-            </a>
-            <ul class="accordian_body pl-[15px] mt-[5px] hidden">
-                <li class="group">
-                    <a href="http://127.0.0.1:8000/users" class="p-[10px] text-[#727272] font-[Inter] text-sm lg:text-base font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.activeSubMenu]:bg-[#FF3B30] group-[.activeSubMenu]:text-[#ffffff]  rounded-[10px] ">
-                        <svg width="20" height="23" viewBox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.468994C15.523 0.468994 20 4.94599 20 10.469C20 15.992 15.523 20.469 10 20.469C4.477 20.469 0 15.992 0 10.469C0 4.94599 4.477 0.468994 10 0.468994ZM2.205 12.279C2.55496 13.7814 3.33129 15.1507 4.44071 16.2226C5.55013 17.2944 6.94545 18.023 8.459 18.321C8.266 15.696 7.403 14.121 6.313 13.25C5.269 12.415 3.853 12.092 2.205 12.278V12.279ZM13.687 13.249C12.597 14.122 11.734 15.696 11.541 18.321C13.0547 18.023 14.4501 17.2941 15.5595 16.2221C16.669 15.1501 17.4452 13.7806 17.795 12.278C16.147 12.092 14.731 12.415 13.687 13.25V13.249ZM10 2.46899C8.13602 2.46867 6.33043 3.11923 4.89502 4.30835C3.4596 5.49747 2.48447 7.1505 2.138 8.98199L2.095 9.22999L4.305 8.78799C4.887 8.67199 5.44 8.36499 6.058 7.94799L6.535 7.61599C7.332 7.04999 8.513 6.46899 10 6.46899C11.388 6.46899 12.509 6.97499 13.3 7.50299L13.942 7.94799C14.482 8.31299 14.974 8.59299 15.478 8.73599L15.695 8.78799L17.905 9.22999C17.6096 7.34575 16.6508 5.62902 15.2013 4.38935C13.7519 3.14968 11.9073 2.46863 10 2.46899Z" fill="currentColor" />
-                        </svg>
-                        Driver</a>
-                </li>
-                <li class="group  ">
-                    <a href="http://127.0.0.1:8000/users" class="p-[10px] text-[#727272] font-[Inter] text-sm lg:text-base font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.activeSubMenu]:bg-[#FF3B30] group-[.activeSubMenu]:text-[#ffffff]  rounded-[10px] ">
-                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.8001 10.649C19.4901 7.46901 17.6101 2.46899 11.8001 2.46899C5.99009 2.46899 4.11007 7.46901 3.80009 10.649C2.71259 11.0617 1.99526 12.1058 2.00009 13.269V14.669C2.00009 16.2154 3.25371 17.469 4.80007 17.469C6.34648 17.469 7.6001 16.2154 7.6001 14.669V13.269C7.59504 12.1309 6.9041 11.1083 5.85007 10.679C6.05009 8.83898 7.0301 4.46901 11.8001 4.46901C16.5701 4.46901 17.5401 8.83898 17.7401 10.679C16.6882 11.1092 16.0008 12.1326 16.0001 13.269V14.669C16.0022 15.1959 16.1525 15.7115 16.4336 16.1571C16.7147 16.6027 17.1155 16.9603 17.5901 17.189C17.1701 17.979 16.1001 19.049 13.4701 19.369C12.9444 18.5707 11.9272 18.256 11.0425 18.6179C10.1578 18.9798 9.65285 19.9171 9.83735 20.855C10.0219 21.7929 10.8442 22.469 11.8001 22.469C12.1705 22.4669 12.533 22.3621 12.8473 22.1661C13.1616 21.9701 13.4153 21.6907 13.5801 21.359C17.8701 20.869 19.2401 18.659 19.6701 17.359C20.8334 16.9822 21.6158 15.8917 21.6001 14.669V13.269C21.6049 12.1058 20.8876 11.0617 19.8001 10.649ZM5.60009 14.669C5.60009 15.1108 5.24191 15.469 4.80007 15.469C4.35823 15.469 4.0001 15.1109 4.0001 14.669V13.269C3.99929 13.1634 4.01939 13.0587 4.05923 12.961C4.09907 12.8632 4.15787 12.7743 4.23224 12.6993C4.3066 12.6244 4.39507 12.5649 4.49253 12.5243C4.58999 12.4838 4.69452 12.4629 4.80009 12.4629C4.90567 12.4629 5.0102 12.4838 5.10766 12.5243C5.20512 12.5649 5.29358 12.6244 5.36795 12.6993C5.44232 12.7743 5.50112 12.8632 5.54096 12.961C5.5808 13.0587 5.60089 13.1634 5.60009 13.269V14.669ZM18.0001 13.269C18.0001 12.8272 18.3582 12.469 18.8001 12.469C19.2419 12.469 19.6001 12.8272 19.6001 13.269V14.669C19.6001 15.1108 19.2419 15.469 18.8001 15.469C18.3582 15.469 18.0001 15.1109 18.0001 14.669V13.269Z" fill="currentColor" />
-                        </svg> Support Team </a>
-                </li>
-
-
-            </ul>
+            </a> 
         </li>
         <li class="item group has-submenu">
-            <a href="javascript:void(0);" class="button nav-link text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px] relative">
+            <a href="{{route('issues.index')}}" class="button nav-link text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px] relative">
                 <span class="w-[34px] h-[34px] inline-flex items-center justify-center">
                     <!-- <img src="http://127.0.0.1:8000/assets/images/user-icon.png" alt="icon" class="hidden group-[.active]:block">
                         <img src="http://127.0.0.1:8000/assets/images/user-icon-w.png" alt="icon" class="block group-[.active]:hidden"> -->
@@ -141,27 +124,10 @@
                 <svg class="hidden group-[.active]:inline-block mr-[5px] absolute right-2 top-5" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.451987 1.57999L1.51299 0.519991L7.29199 6.29699C7.38514 6.38956 7.45907 6.49963 7.50952 6.62088C7.55997 6.74213 7.58594 6.87216 7.58594 7.00349C7.58594 7.13482 7.55997 7.26485 7.50952 7.3861C7.45907 7.50735 7.38514 7.61742 7.29199 7.70999L1.51299 13.49L0.452987 12.43L5.87699 7.00499L0.451987 1.57999Z" fill="currentColor"></path>
                 </svg>
-            </a>
-            <ul class="accordian_body pl-[15px] mt-[5px] hidden">
-                <li class="group">
-                    <a href="http://127.0.0.1:8000/users" class="p-[10px] text-[#727272] font-[Inter] text-sm lg:text-base font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.activeSubMenu]:bg-[#FF3B30] group-[.activeSubMenu]:text-[#ffffff]  rounded-[10px] ">
-                        <svg width="20" height="23" viewBox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.468994C15.523 0.468994 20 4.94599 20 10.469C20 15.992 15.523 20.469 10 20.469C4.477 20.469 0 15.992 0 10.469C0 4.94599 4.477 0.468994 10 0.468994ZM2.205 12.279C2.55496 13.7814 3.33129 15.1507 4.44071 16.2226C5.55013 17.2944 6.94545 18.023 8.459 18.321C8.266 15.696 7.403 14.121 6.313 13.25C5.269 12.415 3.853 12.092 2.205 12.278V12.279ZM13.687 13.249C12.597 14.122 11.734 15.696 11.541 18.321C13.0547 18.023 14.4501 17.2941 15.5595 16.2221C16.669 15.1501 17.4452 13.7806 17.795 12.278C16.147 12.092 14.731 12.415 13.687 13.25V13.249ZM10 2.46899C8.13602 2.46867 6.33043 3.11923 4.89502 4.30835C3.4596 5.49747 2.48447 7.1505 2.138 8.98199L2.095 9.22999L4.305 8.78799C4.887 8.67199 5.44 8.36499 6.058 7.94799L6.535 7.61599C7.332 7.04999 8.513 6.46899 10 6.46899C11.388 6.46899 12.509 6.97499 13.3 7.50299L13.942 7.94799C14.482 8.31299 14.974 8.59299 15.478 8.73599L15.695 8.78799L17.905 9.22999C17.6096 7.34575 16.6508 5.62902 15.2013 4.38935C13.7519 3.14968 11.9073 2.46863 10 2.46899Z" fill="currentColor" />
-                        </svg>
-                        Driver</a>
-                </li>
-                <li class="group  ">
-                    <a href="http://127.0.0.1:8000/users" class="p-[10px] text-[#727272] font-[Inter] text-sm lg:text-base font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.activeSubMenu]:bg-[#FF3B30] group-[.activeSubMenu]:text-[#ffffff]  rounded-[10px] ">
-                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.8001 10.649C19.4901 7.46901 17.6101 2.46899 11.8001 2.46899C5.99009 2.46899 4.11007 7.46901 3.80009 10.649C2.71259 11.0617 1.99526 12.1058 2.00009 13.269V14.669C2.00009 16.2154 3.25371 17.469 4.80007 17.469C6.34648 17.469 7.6001 16.2154 7.6001 14.669V13.269C7.59504 12.1309 6.9041 11.1083 5.85007 10.679C6.05009 8.83898 7.0301 4.46901 11.8001 4.46901C16.5701 4.46901 17.5401 8.83898 17.7401 10.679C16.6882 11.1092 16.0008 12.1326 16.0001 13.269V14.669C16.0022 15.1959 16.1525 15.7115 16.4336 16.1571C16.7147 16.6027 17.1155 16.9603 17.5901 17.189C17.1701 17.979 16.1001 19.049 13.4701 19.369C12.9444 18.5707 11.9272 18.256 11.0425 18.6179C10.1578 18.9798 9.65285 19.9171 9.83735 20.855C10.0219 21.7929 10.8442 22.469 11.8001 22.469C12.1705 22.4669 12.533 22.3621 12.8473 22.1661C13.1616 21.9701 13.4153 21.6907 13.5801 21.359C17.8701 20.869 19.2401 18.659 19.6701 17.359C20.8334 16.9822 21.6158 15.8917 21.6001 14.669V13.269C21.6049 12.1058 20.8876 11.0617 19.8001 10.649ZM5.60009 14.669C5.60009 15.1108 5.24191 15.469 4.80007 15.469C4.35823 15.469 4.0001 15.1109 4.0001 14.669V13.269C3.99929 13.1634 4.01939 13.0587 4.05923 12.961C4.09907 12.8632 4.15787 12.7743 4.23224 12.6993C4.3066 12.6244 4.39507 12.5649 4.49253 12.5243C4.58999 12.4838 4.69452 12.4629 4.80009 12.4629C4.90567 12.4629 5.0102 12.4838 5.10766 12.5243C5.20512 12.5649 5.29358 12.6244 5.36795 12.6993C5.44232 12.7743 5.50112 12.8632 5.54096 12.961C5.5808 13.0587 5.60089 13.1634 5.60009 13.269V14.669ZM18.0001 13.269C18.0001 12.8272 18.3582 12.469 18.8001 12.469C19.2419 12.469 19.6001 12.8272 19.6001 13.269V14.669C19.6001 15.1108 19.2419 15.469 18.8001 15.469C18.3582 15.469 18.0001 15.1109 18.0001 14.669V13.269Z" fill="currentColor" />
-                        </svg> Support Team </a>
-                </li>
-
-
-            </ul>
+            </a> 
         </li>
         <li class="group  ">
-            <a href="http://127.0.0.1:8000/dashboard" class="text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px]">
+            <a href="{{route('report.index')}}" class="text-[#727272] font-[Inter] text-base lg:text-lg font-medium leading-[16px] flex items-center gap-[6px] lg:gap-[10px] group-[.active]:bg-[#FF3B30] group-[.active]:text-[#ffffff] px-3 lg:px-4 py-1 lg:py-2 rounded-l-[20px] rounded-r-[50px]">
                 <span class="w-[34px] h-[34px] inline-flex items-center justify-center">
                     <!-- <img src="http://127.0.0.1:8000/assets/images/dashboard-icon.png" alt="icon" class="hidden group-[.active]:block">
                     <img src="http://127.0.0.1:8000/assets/images/dashboard-icon-w.png" alt="icon" class="block group-[.active]:hidden"> -->

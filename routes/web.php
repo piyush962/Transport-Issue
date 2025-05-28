@@ -2,6 +2,9 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\IssueController;
+use App\Http\Controllers\DeliveriesController;
+use App\Http\Controllers\ReprotController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -25,11 +28,14 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
     Route::prefix('user')->name('users.')->group(function () {
-        Route::get('/driver/index', [UserController::class, 'driverIndex'])->name('driver.index');
-        Route::get('/driver/add', [UserController::class, 'driverAdd'])->name('driver.add');
+    Route::get('/driver/index', [UserController::class, 'driverIndex'])->name('driver.index');
+    Route::get('/driver/add', [UserController::class, 'driverAdd'])->name('driver.add');
     });
+    Route::get('/deliveries/index', [DeliveriesController::class, 'index'])->name('deliveries.index');
+    Route::get('/issues/index', [IssueController::class, 'index'])->name('issues.index');
+    Route::get('/report/index', [ReprotController::class, 'index'])->name('report.index');
+   
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
