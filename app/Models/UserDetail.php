@@ -21,22 +21,21 @@ class UserDetail extends Model
     'profile_picture', // File path     
    ];
 
-   public function profilePhotoUrl(): Attribute
-{
-    return Attribute::make(
-        get: function () {
-            if (!empty($this->profile_picture) && asset('user_documents/profile/' . $this->profile_picture)) {
-                return asset('user_documents/profile/' . $this->profile_picture);
+    public function profilePhotoUrl(): Attribute{
+        return Attribute::make(
+            get: function () {
+                if (!empty($this->profile_picture) && asset('user_documents/profile/' . $this->profile_picture)) {
+                    return asset('user_documents/profile/' . $this->profile_picture);
+                }
+
+                $name = trim(collect(explode(' ', $this->user->name))->map(function ($segment) {
+                    return mb_substr($segment, 0, 5);
+                })->join(' '));
+
+                return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=B8EA3F&background=000000&size=128';
             }
-
-            $name = trim(collect(explode(' ', $this->user->name))->map(function ($segment) {
-                return mb_substr($segment, 0, 5);
-            })->join(' '));
-
-            return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=B8EA3F&background=000000&size=128';
-        }
-    );
-}
+        );
+    }
 
     public function drivingLicenseDocUrl(): Attribute
     {

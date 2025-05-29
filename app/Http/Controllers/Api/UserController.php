@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    
     public function sendOtp(Request $request){
         $role = $request->role;
         $mobile = $request->mobile;
@@ -45,7 +46,6 @@ class UserController extends Controller
             ]
         ], 200);
     }
-
 
     public function verifyOtp(Request $request){
         if ($request->isMethod('post')) {
@@ -279,35 +279,82 @@ class UserController extends Controller
     }
 
     public function updateUser(Request $request){
-    $user = $request->user();  
+        $user = $request->user();  
 
-    // Update User table
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->save();
+        // Update User table
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
 
-    // Update or create userDetail
-    $userDetail = $user->userDetail ?? new UserDetail();
-    $userDetail->user_id = $user->id;
-    $userDetail->address = $request->address;
-    $userDetail->driving_license_number = $request->driving_license_number;
+        // Update or create userDetail
+        $userDetail = $user->userDetail ?? new UserDetail();
+        $userDetail->user_id = $user->id;
+        $userDetail->address = $request->address;
+        $userDetail->driving_license_number = $request->driving_license_number;
 
-    if ($request->hasFile('profile_picture')) {
-        $file = $request->file('profile_picture');
-        $filename = 'profile_' . time() . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('user_documents/profile'), $filename);
-        // $file->storeAs('public/user_documents', $filename);
-        $userDetail->profile_picture = $filename;
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $filename = 'profile_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('user_documents/profile'), $filename);
+            // $file->storeAs('public/user_documents', $filename);
+            $userDetail->profile_picture = $filename;
+        }
+
+        $userDetail->save();
+
+        return response()->json([
+            'status' => true,
+            'code' => 200,
+            'message' => 'User details updated successfully.',
+            'data' => User::with('userDetail')->find($user->id),
+        ]);
     }
 
-    $userDetail->save();
+    public function driverListing(Request $request){
+        $drivers = User::with('userDetail')
+            ->where('role', 'driver')
+            ->where('status', 'active')
+            ->get();
 
-    return response()->json([
-        'status' => true,
-        'code' => 200,
-        'message' => 'User details updated successfully.',
-        'data' => User::with('userDetail')->find($user->id),
-    ]);
-}
+        if($drivers->isEmpty()){
+            return response()->json([
+                'status' => false,
+                'code' => 404,
+                'message' => 'No active drivers found.',
+                'data' => []
+            ], 404);
+        }
 
+        return response()->json([
+            'status' => true,
+            'code' => 200,
+            'message' => 'Active drivers retrieved successfully.',
+            'data' => $drivers
+        ], 200);
+    }
+    public function addDriver(Request $request,$id=null){
+        
+    }
+    public function supportTeamListing(Request $request){
+        $drivers = User::with('userDetail')
+            ->where('role', 'support')
+            ->where('status', 'active')
+            ->get();
+
+        if($drivers->isEmpty()){
+            return response()->json([
+                'status' => false,
+                'code' => 404,
+                'message' => 'No active drivers found.',
+                'data' => []
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => true,
+            'code' => 200,
+            'message' => 'Active support team retrieved successfully.',
+            'data' => $drivers
+        ], 200);
+    }
 }
