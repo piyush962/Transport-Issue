@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Delivery;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('issues', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('delivery_id')->constrained()->onDelete('cascade');
-            $table->foreignId('driver_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('support_id')->nullable()->constrained('users')->onDelete('set null');
+             $table->foreignIdFor(Delivery::class, 'delivery_id', 'id')->nullable()->index()->comment('ID of the driver assigned to the delivery from user table');
+             $table->foreignIdFor(User::class, 'driver_id', 'id')->nullable()->index();
+             $table->foreignIdFor(User::class, 'support_id', 'id')->nullable()->index()->comment('ID of the support assigned to the delivery from user table');
             $table->enum('type', ['basic', 'moderate', 'critical', 'new']);
             $table->bigInteger('issue_category_id')->nullable();
             $table->text('description')->nullable();

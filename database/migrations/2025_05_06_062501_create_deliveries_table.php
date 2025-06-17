@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,13 +14,13 @@ return new class extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('driver_id')->constrained('users')->onDelete('cascade');
-            $table->string('delivery_code')->unique();
-            $table->string('pickup_location');
-            $table->string('drop_location');
+            $table->foreignIdFor(User::class, 'driver_id', 'id')->nullable()->index();
+            $table->string('delivery_code')->unique()->nullable();
+            $table->string('pickup_location')->nullable();
+            $table->string('drop_location')->nullable();
             $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
-            $table->enum('status', ['pending', 'in_progress', 'completed', 'delayed']);
+            $table->enum('status', ['pending', 'in_progress', 'completed', 'delayed'])->default('pending');
             $table->text('remarks')->nullable();
             $table->timestamps();
         });

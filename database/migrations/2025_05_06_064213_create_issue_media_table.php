@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Issue;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +14,8 @@ return new class extends Migration
     {
         Schema::create('issue_media', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('issue_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('issue_id')->constrained()->onDelete('cascade');
+              $table->foreignIdFor(Issue::class)->nullable()->index();
             $table->enum('media_type', ['photo', 'video', 'audio']);
             $table->string('media_path');
             $table->timestamps();

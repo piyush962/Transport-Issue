@@ -332,9 +332,9 @@ class UserController extends Controller
             'data' => $drivers
         ], 200);
     }
-    public function addDriver(Request $request,$id=null){
+    // public function addDriver(Request $request,$id=null){
         
-    }
+    // }
     public function supportTeamListing(Request $request){
         $drivers = User::with('userDetail')
             ->where('role', 'support')

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +15,8 @@ return new class extends Migration
         Schema::create('sos_logs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sos_id');
-            $table->unsignedBigInteger('user_id');
+            // $table->unsignedBigInteger('user_id');
+             $table->foreignIdFor(User::class)->nullable()->index();
             $table->string('action'); // Acknowledged, Escalated, Resolved
             $table->text('remarks')->nullable();
             $table->timestamps();

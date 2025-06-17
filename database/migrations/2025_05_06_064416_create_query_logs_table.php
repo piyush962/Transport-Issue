@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Issue;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('query_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('issue_id')->constrained();
-            $table->foreignId('user_id')->constrained('users');
+            // $table->foreignId('issue_id')->constrained();
+            // $table->foreignId('user_id')->constrained('users');
+            $table->foreignIdFor(User::class)->nullable()->index();
+            $table->foreignIdFor(Issue::class)->nullable()->index();
             $table->enum('action', ['viewed', 'claimed', 'responded', 'escalated', 'reminded', 'unassigned']);
             $table->text('notes')->nullable();
             $table->timestamp('logged_at');

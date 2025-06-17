@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,7 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('deliveries', function (Blueprint $table) {
-            $table->foreignId('assigned_by')->nullable()->constrained('users')->onDelete('set null')->after('driver_id');
+            // $table->foreignId('assigned_by')->nullable()->constrained('users')->onDelete('set null')->after('driver_id');
+             $table->foreignIdFor(User::class, 'assigned_by', 'id')->nullable()->index()->after('driver_id');
             $table->timestamp('estimated_delivery_time')->nullable()->after('drop_location');
             $table->enum('delivery_type', ['normal','standard', 'urgent'])->default('standard')->after('estimated_delivery_time');
             $table->timestamp('delivered_time')->nullable()->after('delivery_type');
