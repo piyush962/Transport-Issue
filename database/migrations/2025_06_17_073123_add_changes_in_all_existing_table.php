@@ -70,8 +70,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             if (!Schema::hasColumn('users', 'deleted_at')) {
                 $table->softDeletes();
-            }
-            $table->uuid('uuid');
+            }        
         });
         Schema::table('user_details', function (Blueprint $table) {
             if (!Schema::hasColumn('user_details', 'deleted_at')) {
